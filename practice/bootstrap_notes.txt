@@ -1,0 +1,12 @@
+OVERALL
+
+  - download source
+  - include link to html (scripts in body while stylesheets to head)
+
+
+
+RESOURCES
+
+  - decent tutorial: http://www.sitepoint.com/twitter-bootstrap-tutorial-handling-complex-designs/
+  - TeaLeaf tutorial: http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1
+  - railscasts: http://railscasts.com/episodes/328-twitter-bootstrap-basics?view=asciicast
