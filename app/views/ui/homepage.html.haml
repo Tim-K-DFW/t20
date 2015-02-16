@@ -1,13 +1,11 @@
 .container
-  .row
-    .column
-      %h3 Midstream
-      %ol
+  .row.voffset5
+    .column.jumbotron
+      %h2 T-120
+      %ol.voffset5
         %li Analyze and compare incentive packages for wealth managers.
-        %li Clealy see how much today's sign-in bonus and higher payout will be worth at producer's retirement time.
+        %li Clearly see how much today's sign-in bonus and higher payout will be worth at producer's retirement time.
         %li Quickly and easily create proposals that demonstrate to producers the benefits of switching firms.
-
-      .nav_item
-        = link_to 'New Proposal', class: 'btn btn-small'
-      .nav_item
-        = link_to 'Saved Proposals', class: 'btn btn-small'
+      .row.voffset7
+        = link_to 'New Proposal', {}, {class: 'btn btn-primary', style: 'margin 0 15px'}
+        = link_to 'Saved Proposals',{}, {class: 'btn btn-primary', style: 'margin 0 15px'}

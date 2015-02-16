@@ -1,0 +1,36 @@
+.container
+  .row.voffset5
+    %h1.text-center New proposal
+    %form.form-horizontal
+      %h4.voffset5 General
+      %fieldset.voffset4
+        .form-group
+          %label.control-label.col-sm-2 Proposal date
+          .col-sm-4
+            %input.form-control(type="date")
+        .form-group
+          %label.control-label.col-sm-2 Recruiter
+          .col-sm-4
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-2 Contact phone
+          .col-sm-4
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-2 Contact email
+          .col-sm-4
+            %input.form-control(type="email")
+      %h4.voffset5 Producer
+      .form-group
+        %label.control-label.col-sm-2 Name
+        .col-sm-4
+          %input.form-control(type="text")
+      .form-group
+        %label.control-label.col-sm-2 Current age
+        .col-sm-4
+          %input.form-control(type="text")
+      .form-group
+        %label.control-label.col-sm-2 Planned retirement age
+        .col-sm-4
+          %input.form-control(type="text")
+      %input.voffset5(type="submit" value="Next Page" class="btn btn-success btn-lg")
