@@ -1,0 +1,36 @@
+PLAN
+
+  - build views
+  - build core
+
+
+FUNCTIONALITY / FEATURES
+
+  - core
+    -- saving input sets for future use
+    -- generating screen proposal from inputs
+  - additional
+    -- user accounts
+    -- generating PDF version of proposal
+
+
+PAGES
+
+  home
+    intro and choice between new and saved
+  saved
+    index of saved
+  new
+    2 tabs for 2 parts
+  proposal
+
+
+
+CONTROLLERS
+
+  proposal
+    #index - shows list of stored proposals
+    #new - renders new form to fill
+    #create - generates proposal and saves it to DB
+    #edit - renders pre-filled form
+    #update - generates proposal based on new inputs and saves in to DB

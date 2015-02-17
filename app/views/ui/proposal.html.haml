@@ -1,0 +1,83 @@
+.container
+  .row
+    %h1 Pro Forma Business Analysis
+    %table.voffset5.col-sm-6.proposal_data{border: 0}
+      %tr
+        %td.col-sm-4 Advisor:
+        %td R Josh "Redbull" Peterson III
+      %tr
+        %td.col-sm-4 Date:
+        %td 13 February 2015
+      %tr
+        %td.col-sm-4 Presented by:
+        %td Creative Advisory Solutions
+  .row
+    %h3.voffset5 Annual cashflow from switching firms
+    %table.table.table-hover.table-condensed.table-striped.table.bordered.voffset3.col-sm-12
+      %tr.border_top
+        %th    
+        %th Sign-up time
+        %th Year 1
+        %th Year 5
+        %th Year 10
+        %th Year 15
+      %tr.border_middle
+        %td.text-center{colspan: 6} 
+          %b Current firm
+      %tr
+        %td Gross production
+        %td $2,000,000
+        %td $2,140,000
+        %td $2,805,103
+        %td $3,934,303
+        %td $5,515,063
+      %tr
+        %td Net payout
+        %td $900,000
+        %td $963,000
+        %td $1,262,297
+        %td $1,770,436
+        %td $2,483,128
+      %tr.border_middle
+        %td.text-center{colspan: 6}
+          %b Fells Wargo Asset Management
+      %tr
+        %td Net payout
+        %td
+        %td $1,177,000
+        %td $1,542,807
+        %td $2,163,866
+        %td $3,034,935
+      %tr
+        %td Additional payout compared to the current firm
+        %td
+        %td $214,000
+        %td $280,510
+        %td $393,430
+        %td $551,806
+      %tr.border_bottom
+        %td Sign-in bonus
+        %td $4,000,000
+        %td
+        %td
+        %td
+        %td
+  .row
+    %h3 Capitalized additional cashflow at retirement
+    %p (assuming all additional cashflows are invested at a conservative 5% rate of return)
+    %table.voffset3.col-sm-6{border: 0}
+      %tr
+        %td.col-sm-4 Sign-in bonus:
+        %td $8,315,713
+      %tr
+        %td.col-sm-4 Higher payout:
+        %td $7,277,106
+      %tr
+        %td.col-sm-4
+          %b Total
+        %td
+          %b $15,592,819
+  .row.voffset7
+    = link_to 'Go Back', {}, {class: 'btn btn-default', style: 'margin 0 15px'}
+    = link_to 'Export to PDF',{}, {class: 'btn btn-success', style: 'margin 0 15px'}
+    = link_to 'Save',{}, {class: 'btn btn-primary', style: 'margin 0 15px'}

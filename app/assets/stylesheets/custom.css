@@ -1,4 +1,16 @@
-// * { border: dashed 1px blue;}
+/*td { border: dashed 1px blue; }
+#table_column { border: dashed 1px red; }
+.row { border: dashed 1px green; }
+table { border: dashed 1px orange; }*/
+
+
+
+/*.proposal_data > td { width: 50%; }*/
+
+
+tr.border_bottom { border-bottom: 3pt solid black; }
+tr.border_top { border-top: 3pt solid black; }
+tr.border_middle { border-top: 2pt solid black; border-bottom: 2pt solid black; }
 
 .voffset  { margin-top: 2px; }
 .voffset1 { margin-top: 5px; }

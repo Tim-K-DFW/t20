@@ -1,0 +1,34 @@
+.container
+  .row.voffset5
+    .col-sm-6.col-sm-offset-2#main_column
+      %h1.text-center New Proposal
+      %form.form-horizontal
+        %h3.voffset5.col-sm-offset-1 Current Firm
+        .form-group.voffset3
+          %label.control-label.col-sm-6 Annual gross production, $
+          .col-sm-3
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-6 Net payout ratio, %
+          .col-sm-3
+            %input.form-control(type="number")
+        .form-group
+          %label.control-label.col-sm-6 Annual production growth rate, %
+          .col-sm-3
+            %input.form-control(type="number")
+        %h3.voffset5.col-sm-offset-1 New Firm
+        .form-group.voffset-3
+          %label.control-label.col-sm-6 Net payout ratio, %
+          .col-sm-3
+            %input.form-control(type="number")
+        .form-group
+          %label.control-label.col-sm-6 Sign-in bonus, $
+          .col-sm-3
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-1 Firm name
+          .col-sm-5
+            %input.form-control(type="text")
+      .row.voffset7.text-center
+        = link_to 'Back to Previous Page',{}, {class: 'btn btn-default btn-lg'}
+        %input(type="submit" value="Generate Proposal" class="btn btn-success btn-lg")

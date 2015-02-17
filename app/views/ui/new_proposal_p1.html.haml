@@ -1,36 +1,38 @@
 .container
   .row.voffset5
-    %h1.text-center New proposal
-    %form.form-horizontal
-      %h4.voffset5 General
-      %fieldset.voffset4
+    .col-sm-6.col-sm-offset-2#main_column
+      %h1.text-center New proposal
+      %form.form-horizontal
+        %h3.voffset5.col-sm-offset-1 General
         .form-group
-          %label.control-label.col-sm-2 Proposal date
-          .col-sm-4
+          %label.control-label.col-sm-4.col-sm-offset-2 Proposal date
+          .col-sm-5
             %input.form-control(type="date")
         .form-group
-          %label.control-label.col-sm-2 Recruiter
-          .col-sm-4
+          %label.control-label.col-sm-4.col-sm-offset-2 Recruiter
+          .col-sm-5
             %input.form-control(type="text")
         .form-group
-          %label.control-label.col-sm-2 Contact phone
-          .col-sm-4
+          %label.control-label.col-sm-4.col-sm-offset-2 Contact phone
+          .col-sm-5
             %input.form-control(type="text")
         .form-group
-          %label.control-label.col-sm-2 Contact email
-          .col-sm-4
+          %label.control-label.col-sm-4.col-sm-offset-2 Contact email
+          .col-sm-5
             %input.form-control(type="email")
-      %h4.voffset5 Producer
-      .form-group
-        %label.control-label.col-sm-2 Name
-        .col-sm-4
-          %input.form-control(type="text")
-      .form-group
-        %label.control-label.col-sm-2 Current age
-        .col-sm-4
-          %input.form-control(type="text")
-      .form-group
-        %label.control-label.col-sm-2 Planned retirement age
-        .col-sm-4
-          %input.form-control(type="text")
-      %input.voffset5(type="submit" value="Next Page" class="btn btn-success btn-lg")
+        %h3.voffset5.col-sm-offset-1 Producer
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Name
+          .col-sm-5
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Current age
+          .col-sm-5
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Planned retirement age
+          .col-sm-5
+            %input.form-control(type="text")
+      .row.voffset7.text-center
+        = link_to 'Back to Menu Main',{}, {class: 'btn btn-default btn-lg'}
+        %input(type="submit" value="Next Page" class="btn btn-success btn-lg")
