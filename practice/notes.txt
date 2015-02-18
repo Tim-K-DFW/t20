@@ -7,8 +7,10 @@ PLAN
 FUNCTIONALITY / FEATURES
 
   - core
-    -- saving input sets for future use
-    -- generating screen proposal from inputs
+    -- generating screen proposal from inputs     new/generate (proposal generated upon validations, not saved unless user wants)
+    -- saving input sets for future user          save (be ready to change if issues)
+    -- editing previously saved proposals         edit/update
+
   - additional
     -- user accounts
     -- generating PDF version of proposal
@@ -25,12 +27,22 @@ PAGES
   proposal
 
 
+MULTI-PAGE FORM
+
+  - several tabs, one action
+    -- can't reliably show validation errors
+    -- need to store a page-specific inputs before final submission
+  - use RailsCast way
+    -- concept: https://www.honeybadger.io/blog/2014/02/11/multi-step-forms-in-rails
+
 
 CONTROLLERS
 
   proposal
     #index - shows list of stored proposals
     #new - renders new form to fill
-    #create - generates proposal and saves it to DB
+    #generate - generates proposal and saves it to DB
+    #save - adds a generated one to db
+
     #edit - renders pre-filled form
     #update - generates proposal based on new inputs and saves in to DB

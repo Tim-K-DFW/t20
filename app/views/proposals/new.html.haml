@@ -1,0 +1,44 @@
+.container
+  .row.voffset5
+    .col-sm-6.col-sm-offset-2#main_column
+      %h1.text-center New proposal
+// navigation
+      / %ul.nav.nav-tabs
+      /   %li Page 1
+      /   %li Page 2
+      /   %li Page 3
+
+
+        / %li{role: 'presentation', class: ('active' if params[:tab] == '1')}
+        /   Page 1
+        / %li{role: 'presentation', class: ('active' if params[:tab] == '2')}
+        /   Page 2
+        / %li{role: 'presentation', class: ('active' if params[:tab].nil?)}
+        /   Page 3
+
+
+
+  /       %li{ :class => ('current' if section == "pages") }
+
+
+  /         = link_to new_path(@proposal, tab: '1'), 'Page 1'
+  /       %li{role: 'presentation'} " class="active">
+  /         = link_to new_path(@proposal, tab: '2'), 'Page 2'
+        
+
+  / <li class='<%= 'active' if params[:tab].nil? %> '>
+  /   <%= link_to user_path(@user) do %>
+  /     Posts 
+  /   <% end %>
+  / </li>
+  
+
+
+
+// partial rendering
+
+      
+      
+    / .row.voffset7.text-center
+    /   = link_to 'Back to Previous Page',{}, {class: 'btn btn-default btn-lg'}
+    /   %input(type="submit" value="Generate Proposal" class="btn btn-success btn-lg")

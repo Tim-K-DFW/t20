@@ -1,0 +1,79 @@
+/ each section is called via post method
+/ and which section to show is in params
+/ tabs/navigation section: every tab is a link to show contoller, e.g. user_path(@user, tab: 'comments')
+/ content section: renders respective part of the form (a partial) depending on param, PASSING DATA to the partial
+
+
+.container
+  .row.voffset5
+    .col-sm-6.col-sm-offset-2#main_column
+      %h1.text-center New proposal
+      %form.form-horizontal
+        %h3.voffset5.col-sm-offset-1 General
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Proposal date
+          .col-sm-5
+            %input.form-control(type="date")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Recruiter
+          .col-sm-5
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Contact phone
+          .col-sm-5
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Contact email
+          .col-sm-5
+            %input.form-control(type="email")
+        %h3.voffset5.col-sm-offset-1 Producer
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Name
+          .col-sm-5
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Current age
+          .col-sm-5
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-2 Planned retirement age
+          .col-sm-5
+            %input.form-control(type="text")
+      .row.voffset7.text-center
+        = link_to 'Back to Menu Main',{}, {class: 'btn btn-default btn-lg'}
+        %input(type="submit" value="Next Page" class="btn btn-success btn-lg")
+
+.container
+  .row.voffset5
+    .col-sm-6.col-sm-offset-2#main_column
+      %h1.text-center New Proposal
+      %form.form-horizontal
+        %h3.voffset5.col-sm-offset-1 Current Firm
+        .form-group.voffset3
+          %label.control-label.col-sm-6 Annual gross production, $
+          .col-sm-3
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-6 Net payout ratio, %
+          .col-sm-3
+            %input.form-control(type="number")
+        .form-group
+          %label.control-label.col-sm-6 Annual production growth rate, %
+          .col-sm-3
+            %input.form-control(type="number")
+        %h3.voffset5.col-sm-offset-1 New Firm
+        .form-group.voffset-3
+          %label.control-label.col-sm-6 Net payout ratio, %
+          .col-sm-3
+            %input.form-control(type="number")
+        .form-group
+          %label.control-label.col-sm-6 Sign-in bonus, $
+          .col-sm-3
+            %input.form-control(type="text")
+        .form-group
+          %label.control-label.col-sm-4.col-sm-offset-1 Firm name
+          .col-sm-5
+            %input.form-control(type="text")
+      .row.voffset7.text-center
+        = link_to 'Back to Previous Page',{}, {class: 'btn btn-default btn-lg'}
+        %input(type="submit" value="Generate Proposal" class="btn btn-success btn-lg")
