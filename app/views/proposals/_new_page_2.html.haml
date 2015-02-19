@@ -1,0 +1,26 @@
+%h3.voffset5.col-sm-offset-1 Current Firm
+.form-group.voffset3
+  = f.label :current_production, 'Annual gross production, $', class: 'control-label col-sm-6'
+  .col-sm-3
+    = f.text_field :current_production, class: 'form-control', hide_label: true
+.form-group
+  = f.label :current_payout, 'Net payout ratio, %', class: 'control-label col-sm-6'
+  .col-sm-3
+    = f.text_field :current_payout, class: 'form-control', hide_label: true
+.form-group
+  = f.label :production_growth, 'Annual production growth rate, %', class: 'control-label col-sm-6'
+  .col-sm-3
+    = f.text_field :production_growth, class: 'form-control', hide_label: true
+%h3.voffset5.col-sm-offset-1 New Firm
+.form-group.voffset-3
+  = f.label :new_payout, 'Net payout ratio, %', class: 'control-label col-sm-6'
+  .col-sm-3
+    = f.text_field :new_payout, class: 'form-control', hide_label: true
+.form-group
+  = f.label :bonus, 'Sign-in bonus', class: 'control-label col-sm-6'
+  .col-sm-3
+    = f.text_field :bonus, class: 'form-control', hide_label: true
+.form-group
+  = f.label :new_firm, 'Firm name', class: 'control-label col-sm-4 col-sm-offset-1'
+  .col-sm-5
+    = f.text_field :new_firm, class: 'form-control', hide_label: true

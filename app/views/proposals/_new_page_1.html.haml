@@ -1,0 +1,30 @@
+%h3.voffset5.col-sm-offset-1 General
+.form-group
+  = f.label :date, 'Proposal date', class: 'control-label col-sm-4 col-sm-offset-2'
+  .col-sm-5
+    =f.text_field :date, class: 'form-control', hide_label: true
+.form-group
+  = f.label :recruiting_firm, 'Recruiter', class: 'control-label col-sm-4 col-sm-offset-2'
+  .col-sm-5
+    =f.text_field :recruiting_firm, class: 'form-control', hide_label: true
+.form-group
+  = f.label :phone, 'Contact phone', class: 'control-label col-sm-4 col-sm-offset-2'
+  .col-sm-5
+    =f.text_field :phone, class: 'form-control', hide_label: true
+.form-group
+  = f.label :email, 'Contact email', class: 'control-label col-sm-4 col-sm-offset-2'
+  .col-sm-5
+    = f.text_field :email, class: 'form-control', hide_label: true
+%h3.voffset5.col-sm-offset-1 Producer
+.form-group
+  = f.label :producer, 'Name', class: 'control-label col-sm-4 col-sm-offset-2'
+  .col-sm-5
+    = f.text_field :producer, class: 'form-control', hide_label: true
+.form-group
+  = f.label :current_age, 'Current age', class: 'control-label col-sm-4 col-sm-offset-2'
+  .col-sm-5
+    = f.text_field :current_age, class: 'form-control', hide_label: true
+.form-group
+  = f.label :retirement_age, 'Planned retirement age', class: 'control-label col-sm-4 col-sm-offset-2'
+  .col-sm-5
+    = f.text_field :retirement_age, class: 'form-control', hide_label: true
