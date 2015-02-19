@@ -62,5 +62,24 @@ class Proposal < ActiveRecord::Base
       result << projection_length
     end
     return result
+  end #timeframe
+
+  def generate
+    result = {}
+    timeframe.each do |year| 
+      this_column = {}
+      this_column[:age] = current_age + year
+      this_column[:gross_production] = current_production * ((1 + production_growth / 100) ** year)
+      this_column[:current_payout_val] = this_column[:gross_production] * (current_payout / 100)
+      
+      result[year] = this_column
+    end
+    result[0][:new_payout_val] = nil
+    result[0][:additional_payout] = nil
+    result[0][:bonus] = bonus
+    return result
   end
+
+
+
 end

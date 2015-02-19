@@ -1,55 +1,6 @@
 require 'spec_helper'
 
 describe Proposal do
-  
-  # context 'at step 1' do
-  #   proposal = Proposal.new
-  #   proposal.current_step = 1
-  #   it { is_expected.to validate_length_of(:date).is_at_least(3).is_at_most(25) }
-  #   it { is_expected.to validate_length_of(:recruiting_firm).is_at_least(3).is_at_most(25) }
-  #   it { is_expected.to validate_length_of(:phone).is_at_least(3).is_at_most(15) }
-  #   it { is_expected.to validate_length_of(:email).is_at_least(7).is_at_most(40) }
-  #   it { is_expected.to validate_length_of(:producer).is_at_least(3).is_at_most(25) }
-
-  #   it { is_expected.to validate_presence_of(:current_age) }
-  #   it { is_expected.to validate_numericality_of(:current_age).only_integer }
-  #   it { is_expected.to validate_numericality_of(:current_age).is_greater_than(20) }
-  #   it { is_expected.to validate_numericality_of(:current_age).is_less_than(70) }
-
-  #   it { is_expected.to validate_presence_of(:retirement_age) }
-  #   it { is_expected.to validate_numericality_of(:retirement_age).only_integer }
-  #   it { is_expected.to validate_numericality_of(:retirement_age).is_greater_than(25) }
-  #   it { is_expected.to validate_numericality_of(:current_age).is_less_than(70) }
-  # end
-
-  # context 'at step 2' do                          # after spending an hour trying to get this to work, moving on
-  #   proposal = Proposal.new
-  #   proposal.current_step = 2
-  #   it { is_expected.to validate_presence_of(:current_production) }
-  #   it { is_expected.to validate_numericality_of(:current_production).only_integer }
-  #   it { is_expected.to validate_numericality_of(:current_production).is_greater_than(100000) }
-  #   it { is_expected.to validate_numericality_of(:current_production).is_less_than(100000000) }
-    
-  #   it { is_expected.to validate_presence_of(:current_payout) }
-  #   it { is_expected.to validate_numericality_of(:current_payout).is_greater_than_or_equal_to(1) }
-  #   it { is_expected.to validate_numericality_of(:current_payout).is_less_than(100) }
-
-  #   it { is_expected.to validate_presence_of(:production_growth) }
-  #   it { is_expected.to validate_numericality_of(:production_growth).is_greater_than_or_equal_to(0) }
-  #   it { is_expected.to validate_numericality_of(:production_growth).is_less_than(100) }
-
-  #   it { is_expected.to validate_presence_of(:new_payout) }
-  #   it { is_expected.to validate_numericality_of(:new_payout).is_greater_than_or_equal_to(1) }
-  #   it { is_expected.to validate_numericality_of(:new_payout).is_less_than(100) }
-
-  #   it { is_expected.to validate_presence_of(:bonus) }
-  #   it { is_expected.to validate_numericality_of(:bonus).only_integer }
-  #   it { is_expected.to validate_numericality_of(:bonus).is_greater_than_or_equal_to(0) }
-  #   it { is_expected.to validate_numericality_of(:bonus).is_less_than(500000000) }
-
-  #   it { is_expected.to validate_length_of(:new_firm).is_at_least(3).is_at_most(25) }
-  # end
-
   describe '#timeframe' do
     let(:proposal) { Proposal.new(current_age: 20) }
 
@@ -88,5 +39,33 @@ describe Proposal do
       expect(proposal.timeframe).to contain_exactly(0, 1, 2, 3, 5, 10, 15, 20, 25, 30, 32)
     end
   end # #.timeframe
-    
+  
+  describe '#generate' do
+    let(:proposal) { Proposal.new(current_age: 30, retirement_age: 53, current_production: 1000000, current_payout: 45, production_growth: 10, new_payout: 60, bonus: 2000000) }
+
+    it 'creates a hash of hashes whose keys are years' do
+      report = proposal.generate
+      expect(report.keys).to eq([0, 1, 2, 3, 5, 10, 15, 20, 23])
+    end
+
+    it 'fills 0 year subhash with correct values' do
+      report = proposal.generate
+      expect(report[0][:age]).to eq(30)
+      expect(report[0][:gross_production]).to eq(1000000)
+      expect(report[0][:current_payout_val]).to eq(450000)
+      expect(report[0][:bonus]).to eq(2000000)
+    end
+
+    it 'fills a non-0 year subhash with correct values' do
+      report = proposal.generate
+
+    end
+
+
+    it 'creates the totals hash with correct values'
+  end
+
+  describe '#totals' do
+    it 'creates a hash with correct values'
+  end
 end
