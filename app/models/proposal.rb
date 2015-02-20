@@ -71,12 +71,15 @@ class Proposal < ActiveRecord::Base
       this_column[:age] = current_age + year
       this_column[:gross_production] = current_production * ((1 + production_growth / 100) ** year)
       this_column[:current_payout_val] = this_column[:gross_production] * (current_payout / 100)
-      
+      this_column[:new_payout_val] = this_column[:gross_production] * (new_payout / 100)
+      this_column[:additional_payout] = this_column[:new_payout_val] - this_column[:current_payout_val]
       result[year] = this_column
     end
     result[0][:new_payout_val] = nil
     result[0][:additional_payout] = nil
     result[0][:bonus] = bonus
+    result[:capitalized][:bonus] = bonus * (1.05 ** (retirement_age - current_age))
+    result[:capitalized][:payout] = result[1] * ((1.05 ** (retirement_age - current_age) - (1 + production_growth) ** (retirement_age - current_age))/(0.05 - production_growth))
     return result
   end
 
