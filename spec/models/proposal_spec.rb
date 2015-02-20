@@ -45,7 +45,7 @@ describe Proposal do
     let(:report) { proposal.generate }
 
     it 'creates a hash of hashes whose keys are years' do
-      expect(report.keys).to eq([0, 1, 2, 3, 5, 10, 15, 20, 23])
+      expect(report.keys).to eq([0, 1, 2, 3, 5, 10, 15, 20, 23, capitalized:])
     end
 
     it 'fills 0 year subhash with correct values' do
@@ -68,7 +68,7 @@ describe Proposal do
 
 
     it 'creates the totals hash with correct values' do
-      expect(report[:capitalized][:bonus]).to eq(8315713)
+      expect(report[:capitalized][:bonus]).to eq(12286095)
       expect(report[:capitalized][:payout]).to eq(7277106)
       expect(report[:capitalized][:total]).to eq(15592819)
     end

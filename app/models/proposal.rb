@@ -78,11 +78,19 @@ class Proposal < ActiveRecord::Base
     result[0][:new_payout_val] = nil
     result[0][:additional_payout] = nil
     result[0][:bonus] = bonus
-    result[:capitalized][:bonus] = bonus * (1.05 ** (retirement_age - current_age))
-    result[:capitalized][:payout] = result[1] * ((1.05 ** (retirement_age - current_age) - (1 + production_growth) ** (retirement_age - current_age))/(0.05 - production_growth))
+    result[:capitalized] = {}
+    result[:capitalized][:bonus] = (bonus * (1.05 ** (retirement_age - current_age))).round
+    result[:capitalized][:payout] = capitalized_annuity
     return result
   end
 
+  def capitalized_annuity
+    p = (new_payout - current_payout) / 100 * (current_production * production_growth)
+    r = 0.05
+    g = production_growth
+    n = retirement_age - current_age
+    return p * (((1+r)**n - (1+g)**n)/(r-g))
+  end
 
 
 end
