@@ -25,9 +25,9 @@ class ProposalsController < ApplicationController
     if @proposal.new_record?
       render 'new'
     else
-      flash[:success] = 'Temporary notice (report generated!)'
+      @proposal.generate
       session[:proposal_step] = session[:proposal_params] = nil
-      redirect_to root_path
+      render 'result'
     end
   end
 

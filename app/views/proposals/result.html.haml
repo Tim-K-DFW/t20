@@ -1,0 +1,70 @@
+.container
+  .row
+    %h1 Pro Forma Business Analysis
+    %table.voffset5.col-sm-5.proposal_data{border: 0}
+      %tr
+        %td.col-sm-2 Advisor:
+        %td.col-sm-3= @proposal.producer
+      %tr
+        %td.col-sm-2 Date:
+        %td.col-sm-3= @proposal.date
+      %tr
+        %td.col-sm-2 Presented by:
+        %td.col-sm-3= @proposal.recruiting_firm
+  .row
+    %h3.voffset5 Annual extra earnings from switching firms
+    %table.table.table-hover.table-condensed.table.bordered.voffset3.col-sm-12
+      / %tr.border_top
+      /   %th    
+      /   - @proposal.table.each do |column|
+      /     %th= column[0] == 0 ? 'Sign-up time' : "Year #{column[0]}"
+      %tr.border_top.top_row
+        %th Age
+        - @proposal.table.each do |column|
+          %td= column[1][:age]    
+      %tr.border_middle
+        %td.text-center{:colspan => "#{@proposal.table.size + 1}"} 
+          %b Current firm
+      %tr.row_content
+        %td.row_header Gross production
+        - @proposal.table.each do |column|
+          %td= number_to_currency(column[1][:gross_production], precision: 0)
+      %tr.row_content
+        %td.row_header Net payout
+        - @proposal.table.each do |column|
+          %td= number_to_currency(column[1][:current_payout_val], precision: 0)
+      %tr.border_middle
+        %td.text-center{:colspan => "#{@proposal.table.size + 1}"}
+          %b= @proposal.new_firm.blank? ? "New firm" : "#{@proposal.new_firm}"
+      %tr.row_content
+        %td.row_header Net payout
+        - @proposal.table.each do |column|
+          %td= number_to_currency(column[1][:new_payout_val], precision: 0)
+      %tr.row_content
+        %td.row_header Additional payout compared to the current firm
+        - @proposal.table.each do |column|
+          %td= number_to_currency(column[1][:additional_payout], precision: 0)
+      %tr.border_bottom.row_content
+        %td.row_header Sign-in bonus
+        %td= number_to_currency(@proposal.table.first[1][:bonus], precision: 0)
+        - (@proposal.table.size - 1).times do
+          %td
+  .row
+    %h3 Additional net worth at retirement time - if switched to the new firm today
+    %p (pre-tax, assuming all additional earnings are invested at a conservative 5% rate of return as soon as received)
+    %table.voffset3.col-sm-4{border: 0}
+      %tr
+        %td.col-sm-2 Sign-in bonus:
+        %td.col-sm-2.row_content= number_to_currency(@proposal.capitalized[:bonus], precision: 0)
+      %tr
+        %td.col-sm-2 Higher payout:
+        %td.col-sm-2.row_content= number_to_currency(@proposal.capitalized[:payout], precision: 0)
+      %tr
+        %td.col-sm-2
+          %b Total
+        %td.col-sm-2.row_content
+          %b= number_to_currency(@proposal.capitalized[:total], precision: 0)
+  .row.voffset7
+    = link_to 'Go Back', {}, {class: 'btn btn-default', style: 'margin 0 15px'}
+    = link_to 'Export to PDF',{}, {class: 'btn btn-success', style: 'margin 0 15px'}
+    = link_to 'Save',{}, {class: 'btn btn-primary', style: 'margin 0 15px'}

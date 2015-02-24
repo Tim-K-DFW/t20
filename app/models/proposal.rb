@@ -69,28 +69,47 @@ class Proposal < ActiveRecord::Base
     timeframe.each do |year| 
       this_column = {}
       this_column[:age] = current_age + year
-      this_column[:gross_production] = current_production * ((1 + production_growth / 100) ** year)
-      this_column[:current_payout_val] = this_column[:gross_production] * (current_payout / 100)
-      this_column[:new_payout_val] = this_column[:gross_production] * (new_payout / 100)
+      this_column[:gross_production] = (current_production * ((1 + production_growth / 100) ** year)).round
+      this_column[:current_payout_val] = (this_column[:gross_production] * (current_payout / 100)).round
+      this_column[:new_payout_val] = (this_column[:gross_production] * (new_payout / 100)).round
       this_column[:additional_payout] = this_column[:new_payout_val] - this_column[:current_payout_val]
       result[year] = this_column
     end
+    
     result[0][:new_payout_val] = nil
     result[0][:additional_payout] = nil
     result[0][:bonus] = bonus
-    result[:capitalized] = {}
-    result[:capitalized][:bonus] = (bonus * (1.05 ** (retirement_age - current_age))).round
-    result[:capitalized][:payout] = capitalized_annuity
-    return result
+    @table = result
+
+    capitalized = {}
+    capitalized[:bonus] = (bonus * (1.05 ** (retirement_age - current_age))).round
+    capitalized[:payout] = capitalized_annuity
+    capitalized[:total] = capitalized[:bonus] + capitalized[:payout]
+    @capitalized = capitalized
   end
 
   def capitalized_annuity
-    p = (new_payout - current_payout) / 100 * (current_production * production_growth)
+    p = (new_payout - current_payout) / 100 * (current_production * (1 + production_growth / 100))
     r = 0.05
-    g = production_growth
+    g = production_growth / 100
     n = retirement_age - current_age
-    return p * (((1+r)**n - (1+g)**n)/(r-g))
+    return (p * (  ((1+r)**n - (1+g)**n) / (r-g)  )).round
   end
 
+  def table
+    @table
+  end
+
+  def table=(args)
+    @table = args
+  end
+
+  def capitalized
+    @capitalized
+  end
+
+  def capitalized=(args)
+    @capitalized = args
+  end
 
 end

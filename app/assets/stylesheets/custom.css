@@ -12,6 +12,10 @@ tr.border_bottom { border-bottom: 3pt solid black; }
 tr.border_top { border-top: 3pt solid black; }
 tr.border_middle { border-top: 2pt solid black; border-bottom: 2pt solid black; }
 
+.top_row { background-color: #E6E6E6; text-align: center; }
+.row_header { text-align: left; }
+.row_content { text-align: right; }
+
 .voffset  { margin-top: 2px; }
 .voffset1 { margin-top: 5px; }
 .voffset2 { margin-top: 10px; }
