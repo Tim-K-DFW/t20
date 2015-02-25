@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150217123025) do
     t.float    "production_growth"
     t.float    "current_payout"
     t.float    "new_payout"
+    t.boolean  "final"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -5,6 +5,7 @@ class CreateProposals < ActiveRecord::Migration
       t.string :recruiting_firm, :phone, :email, :producer, :new_firm, :date
       t.integer :current_age, :retirement_age, :current_production, :bonus
       t.float :production_growth, :current_payout, :new_payout
+      t.boolean :final
       t.timestamps
     end
   end

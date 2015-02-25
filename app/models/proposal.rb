@@ -1,7 +1,7 @@
 class Proposal < ActiveRecord::Base
   with_options if: lambda { |p| p.current_step == 1 } do |step_1|
     step_1.validates :date, length: {in: 3..25}, allow_blank: true
-    step_1.validates :recruiting_firm, length: {in: 3..25}, allow_blank: true
+    step_1.validates :recruiting_firm, length: {in: 3..40}, allow_blank: true
     step_1.validates :phone, length: {in: 3..15}, allow_blank: true
     step_1.validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, length: {in: 7..40}, allow_blank: true
     step_1.validates :producer, length: {in: 3..25}, allow_blank: true
@@ -15,7 +15,7 @@ class Proposal < ActiveRecord::Base
     step_2.validates :production_growth, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: 100 }
     step_2.validates :new_payout, presence: true, numericality: { greater_than: 1, less_than: 100 }
     step_2.validates :bonus, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 500000000 }
-    step_2.validates :new_firm, length: {in: 3..25}, allow_blank: true
+    step_2.validates :new_firm, length: {in: 3..40}, allow_blank: true
   end
 
   attr_writer :current_step
@@ -25,7 +25,7 @@ class Proposal < ActiveRecord::Base
   end
 
   def steps
-    (1..2).to_a
+    (1..3).to_a         # 1 and 2 for input screen; 3 for proposal preview (user can go back to page 2 from it)
   end
 
   def next_step

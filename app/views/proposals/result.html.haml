@@ -41,7 +41,7 @@
         - @proposal.table.each do |column|
           %td= number_to_currency(column[1][:new_payout_val], precision: 0)
       %tr.row_content
-        %td.row_header Additional payout compared to the current firm
+        %td.row_header Extra payout
         - @proposal.table.each do |column|
           %td= number_to_currency(column[1][:additional_payout], precision: 0)
       %tr.border_bottom.row_content
@@ -65,6 +65,7 @@
         %td.col-sm-2.row_content
           %b= number_to_currency(@proposal.capitalized[:total], precision: 0)
   .row.voffset7
-    = link_to 'Go Back', {}, {class: 'btn btn-default', style: 'margin 0 15px'}
+    = link_to 'Back', {action: 'create', back_button: true}, {method: 'post', class: 'btn btn-default', style: 'margin 0 15px'}
+    = link_to 'Main Menu', root_path, {class: 'btn btn-default', style: 'margin 0 15px'}
     = link_to 'Export to PDF',{}, {class: 'btn btn-success', style: 'margin 0 15px'}
-    = link_to 'Save',{}, {class: 'btn btn-primary', style: 'margin 0 15px'}
+    = link_to 'Save', {action: 'save', proposal: @proposal.attributes}, {method: 'post', class: 'btn btn-primary', style: 'margin 0 15px'}

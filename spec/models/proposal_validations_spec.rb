@@ -6,7 +6,7 @@ describe Proposal do
     proposal = Proposal.new
     proposal.current_step = 1
     it { is_expected.to validate_length_of(:date).is_at_least(3).is_at_most(25) }
-    it { is_expected.to validate_length_of(:recruiting_firm).is_at_least(3).is_at_most(25) }
+    it { is_expected.to validate_length_of(:recruiting_firm).is_at_least(3).is_at_most(40) }
     it { is_expected.to validate_length_of(:phone).is_at_least(3).is_at_most(15) }
     it { is_expected.to validate_length_of(:email).is_at_least(7).is_at_most(40) }
     it { is_expected.to validate_length_of(:producer).is_at_least(3).is_at_most(25) }
@@ -47,7 +47,7 @@ describe Proposal do
   #   it { is_expected.to validate_numericality_of(:bonus).is_greater_than_or_equal_to(0) }
   #   it { is_expected.to validate_numericality_of(:bonus).is_less_than(500000000) }
 
-  #   it { is_expected.to validate_length_of(:new_firm).is_at_least(3).is_at_most(25) }
+  #   it { is_expected.to validate_length_of(:new_firm).is_at_least(3).is_at_most(40) }
   end
     
 end
