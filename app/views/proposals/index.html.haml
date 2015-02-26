@@ -3,17 +3,23 @@
     %h3 Saved proposals
     %table.table.table-striped.table-hover.voffset5
       %tr
-        %th Offering Firm
-        %th Producer
-        %th Annual Production
-        %th Proposal Date
-        %th
-      - @proposals.each do |proposal|
+        %th.top_row Offering Firm
+        %th.top_row Producer
+        %th.top_row Annual Production
+        %th.top_row Current Payout
+        %th.top_row New Payout
+        %th.top_row Last Updated
+        %th.top_row
+        %th.top_row
+      - @proposals.sort_by{|x| x.updated_at}.reverse.each do |proposal|
         %tr
           %td= proposal.new_firm
           %td= proposal.producer
-          %td= number_to_currency(proposal.current_production, precision: 0)
-          %td= proposal.updated_at
+          %td.row_content= number_to_currency(proposal.current_production, precision: 0)
+          %td.row_content= number_to_percentage(proposal.current_payout, precision: 1)
+          %td.row_content= number_to_percentage(proposal.new_payout, precision: 1)
+          %td.row_content= pretty_time(proposal.updated_at)
           %td= link_to 'Load', proposal_path(proposal), {class: 'btn btn-default btn-xs'}
+          %td= link_to 'Delete', proposal_path(proposal), {method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs'} 
   .row.voffset7
     = link_to 'Back to Main Menu', root_path, {class: 'btn btn-primary', style: 'margin 0 15px'}

@@ -22,23 +22,12 @@ describe ProposalsController do
   end
 
   describe 'GET show' do
-    # it 'finds correct proposal inputs' do
-    #   test = Fabricate(:proposal)
-    #   get :show, id: test.id
-    #   binding.pry
-    #   expect(assigns(:this_proposal)).to eq(test.attributes)
-    # end
-
-    it 'generates params for CREATE action' do
-      proposal = Fabricate(:proposal)
-      get :show, id: proposal.id
+    it 'finds correct proposal inputs' do
+      test = Fabricate(:proposal)
+      get :show, id: test.id
+      expect(assigns(:proposal)).to eq(test)
     end
 
-    it 'redirects to CREATE action' do
-      proposal = Fabricate(:proposal)
-      get :show, id: proposal.id
-      expect(response).to redirect_to('create')
-    end
   end
 
   describe 'POST create' do

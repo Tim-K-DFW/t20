@@ -1,4 +1,7 @@
 class Proposal < ActiveRecord::Base
+
+  INCOME_TAX_RATE = 0.4
+
   with_options if: lambda { |p| p.current_step == 1 } do |step_1|
     step_1.validates :date, length: {in: 3..25}, allow_blank: true
     step_1.validates :recruiting_firm, length: {in: 3..40}, allow_blank: true
@@ -73,11 +76,13 @@ class Proposal < ActiveRecord::Base
       this_column[:current_payout_val] = (this_column[:gross_production] * (current_payout / 100)).round
       this_column[:new_payout_val] = (this_column[:gross_production] * (new_payout / 100)).round
       this_column[:additional_payout] = this_column[:new_payout_val] - this_column[:current_payout_val]
+      this_column[:additional_payout_after_tax] = this_column[:additional_payout] * (1 - INCOME_TAX_RATE)
       result[year] = this_column
     end
     
     result[0][:new_payout_val] = nil
     result[0][:additional_payout] = nil
+    result[0][:additional_payout_after_tax] = nil
     result[0][:bonus] = bonus
     @table = result
 
@@ -89,7 +94,7 @@ class Proposal < ActiveRecord::Base
   end
 
   def capitalized_annuity
-    p = (new_payout - current_payout) / 100 * (current_production * (1 + production_growth / 100))
+    p = (new_payout - current_payout) / 100 * (current_production * (1 + production_growth / 100)) * (1 - INCOME_TAX_RATE)
     r = 0.05
     g = production_growth / 100
     n = retirement_age - current_age

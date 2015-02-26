@@ -72,6 +72,12 @@ class ProposalsController < ApplicationController
     render 'result'
   end
 
+  def destroy
+    @proposal = Proposal.find(params[:id])
+    @proposal.destroy
+    redirect_to proposals_path
+  end
+
   private
 
   def proposal_params

@@ -15,6 +15,9 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'fabrication'
 gem 'faker'
 gem 'turbolinks'
+gem 'wkhtmltopdf-binary'
+# gem 'wicked_pdf'
+# gem 'pdfkit'
 
 group :development do
   gem 'thin'

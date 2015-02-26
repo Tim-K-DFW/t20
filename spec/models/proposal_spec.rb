@@ -68,8 +68,8 @@ describe Proposal do
 
     it 'creates the totals hash with correct values' do
       expect(proposal.capitalized[:bonus]).to eq(12286095)
-      expect(proposal.capitalized[:payout]).to eq(17858365)
-      expect(proposal.capitalized[:total]).to eq(30144460)
+      expect(proposal.capitalized[:payout]).to eq(10715019)
+      expect(proposal.capitalized[:total]).to eq(23001114)
     end
   end
 
