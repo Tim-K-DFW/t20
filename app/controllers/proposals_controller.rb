@@ -23,7 +23,7 @@ class ProposalsController < ApplicationController
 
   def create
     session[:proposal_params].deep_merge!(params[:proposal]) if (params[:proposal] && session[:proposal_params])
-    @proposal = Proposal.new(session[:proposal_params])
+    @proposal = Proposal.new(session[:proposal_params].except("created_at", "updated_at"))
     @proposal.current_step = session[:proposal_step]
     
     if @proposal.valid?                 # change current step depending on what button (Next or Back) called this action
