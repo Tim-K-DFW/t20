@@ -1,3 +1,3 @@
-Financial planning app for wealth management recruiters.
+Financial planning app for wealth management recruiters (well, prototype to be exact...)
 
-Coming soon... (should be by 2/22/15)
+Deployed at t20.herokuapp.com
