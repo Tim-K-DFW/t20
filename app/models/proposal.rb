@@ -22,6 +22,7 @@ class Proposal < ActiveRecord::Base
   end
 
   attr_writer :current_step
+  attr_accessor :table, :capitalized
 
   def current_step
     @current_step || steps.first
@@ -99,22 +100,6 @@ class Proposal < ActiveRecord::Base
     g = production_growth / 100
     n = retirement_age - current_age
     return (p * (  ((1+r)**n - (1+g)**n) / (r-g)  )).round
-  end
-
-  def table
-    @table
-  end
-
-  def table=(args)
-    @table = args
-  end
-
-  def capitalized
-    @capitalized
-  end
-
-  def capitalized=(args)
-    @capitalized = args
   end
 
 end
