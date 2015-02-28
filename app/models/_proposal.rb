@@ -69,18 +69,37 @@ class Proposal < ActiveRecord::Base
   end #timeframe
 
   def generate
-    output = Output.new(self)
-    
-    @table = {}
+    result = {}
     timeframe.each do |year| 
-      @table[year] = output.fill_year(year)
+      this_column = {}
+      this_column[:age] = current_age + year
+      this_column[:gross_production] = (current_production * ((1 + production_growth / 100) ** year)).round
+      this_column[:current_payout_val] = (this_column[:gross_production] * (current_payout / 100)).round
+      this_column[:new_payout_val] = (this_column[:gross_production] * (new_payout / 100)).round
+      this_column[:additional_payout] = this_column[:new_payout_val] - this_column[:current_payout_val]
+      this_column[:additional_payout_after_tax] = this_column[:additional_payout] * (1 - INCOME_TAX_RATE)
+      result[year] = this_column
     end
     
-    @table[0][:new_payout_val] = nil
-    @table[0][:additional_payout] = nil
-    @table[0][:additional_payout_after_tax] = nil
-    @table[0][:bonus] = bonus
-    
-    @capitalized = output.capitalized
+    result[0][:new_payout_val] = nil
+    result[0][:additional_payout] = nil
+    result[0][:additional_payout_after_tax] = nil
+    result[0][:bonus] = bonus
+    @table = result
+
+    capitalized = {}
+    capitalized[:bonus] = (bonus * (1.05 ** (retirement_age - current_age))).round
+    capitalized[:payout] = capitalized_annuity
+    capitalized[:total] = capitalized[:bonus] + capitalized[:payout]
+    @capitalized = capitalized
   end
+
+  def capitalized_annuity
+    p = (new_payout - current_payout) / 100 * (current_production * (1 + production_growth / 100)) * (1 - INCOME_TAX_RATE)
+    r = 0.05
+    g = production_growth / 100
+    n = retirement_age - current_age
+    return (p * (  ((1+r)**n - (1+g)**n) / (r-g)  )).round
+  end
+
 end
