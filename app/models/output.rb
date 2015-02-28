@@ -1,6 +1,4 @@
 class Output
-  attr_accessor :annual_figures, :capitalized
-
   def initialize(args)
     @current_age = args[:current_age]
     @retirement_age = args[:retirement_age]
@@ -9,8 +7,6 @@ class Output
     @current_payout = args[:current_payout]
     @new_payout = args[:new_payout]
     @bonus = args[:bonus]
-    @annual_figures = {}
-    @capitalized = {}
   end
 
   def fill_year(year)
@@ -37,7 +33,8 @@ class Output
     r = 0.05
     g = @production_growth / 100
     n = @retirement_age - @current_age
-    return (p*(((1+r)**n-(1+g)**n)/(r-g))).round
+    temp = (p*(((1+r)**n-(1+g)**n)/(r-g)))
+    temp.nan? ? 0 : temp.round
   end
 
 end
