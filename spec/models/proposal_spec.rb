@@ -72,6 +72,4 @@ describe Proposal do
       expect(proposal.capitalized[:total]).to eq(23001114)
     end
   end
-
-  
 end

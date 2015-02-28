@@ -81,6 +81,6 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit!
+    params.require(:proposal).permit(:bonus, :current_age, :current_payout, :current_production, :date, :email, :final, :id, :new_firm, :new_payout, :phone, :producer, :production_growth, :recruiting_firm, :retirement_age)
   end
 end
