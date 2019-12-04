@@ -1,5 +1,5 @@
 *was deployed to Heroku, inactive as of 2019*
 
-Financial planning app for wealth management recruiters (well, prototype to be exact...)
+Prototype of a financial planning app. Essentially, a spreadsheet template with pretty output that requires zero Excel skills from the user.
 
 Deployed at t20.herokuapp.com
